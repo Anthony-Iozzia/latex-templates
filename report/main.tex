@@ -1,0 +1,93 @@
+\documentclass{article}
+
+%%%%% Language setting %%%%%
+% English
+\usepackage[english]{babel}
+% French
+% \usepackage[french]{babel}
+% \usepackage[T1]{fontenc}
+
+
+%%%%% Packages %%%%%
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem} % Customize numbering (a, 1, etc.)
+\usepackage{bold-extra} % Enable to use bold for typewriter font
+\usepackage{float} % Lets you prevent LaTeX from repositioning the tables.
+\usepackage{siunitx} % SI units
+\usepackage{booktabs} % Professional looking tables
+\usepackage{multirow} % special array
+\usepackage{authblk} % add affil block after author (https://www.overleaf.com/learn/latex/Questions/How_do_I_add_additional_author_names_and_affiliations_to_my_paper%3F)
+
+
+%%%%% Page number in footer %%%%%
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\renewcommand{\headrulewidth}{0pt}
+% if English:
+\cfoot{Page \thepage\ of \pageref*{LastPage}}
+% if French:
+%\cfoot{Page \thepage\ sur \pageref*{LastPage}}
+
+
+%%%%% Latex cheatsheet %%%%%
+% Quotations
+% start: `` end: '' (example: ``this is a sentence'')
+
+% Units
+% Number and unit: \SI{100}{\mega\bit\per\second}
+% Unit only (outside math mode): \si{\mega\bit\per\second}
+% Unit only (inside math mode): \,\si{\mega\bit\per\second}
+
+% Subscripts and superscripts
+% Inside math mode:
+% - Subscript: variable_n or variable_{multiple subscript chars}
+% - Superscript: variable^n or variable^{multiple superscript chars}
+% Outside math mode: \textsubscript{n} or \textsuperscript{th}
+
+% Insert image
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=1\textwidth]{resources/filename.png}
+%\caption{This is a caption}
+%\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Title}
+
+\author{Anthony IOZZIA}
+
+\affil{Course: course name}
+\affil{Teacher: teacher name}
+
+\begin{document}
+\maketitle
+
+%%%%% Abstract %%%%%
+%\begin{abstract}
+%\end{abstract}
+%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{fancy}
+
+%%%%% Table of contents %%%%%
+\setcounter{tocdepth}{3}
+\tableofcontents
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+Text
+
+%\bibliographystyle{unsrt}
+%\bibliography{references}
+
+\end{document}
