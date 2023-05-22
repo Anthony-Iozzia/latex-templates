@@ -17,8 +17,9 @@
 \usepackage{float} % Lets you prevent LaTeX from repositioning the tables.
 \usepackage{siunitx} % SI units
 \usepackage{booktabs} % Professional looking tables
-\usepackage{multirow} % special array
-\usepackage{authblk} % add affil block after author (https://www.overleaf.com/learn/latex/Questions/How_do_I_add_additional_author_names_and_affiliations_to_my_paper%3F)
+\usepackage{multirow} % Special array
+\usepackage{authblk} % Affil block(s) after author
+\usepackage{titling} % Image before title
 
 
 %%%%% Page number in footer %%%%%
@@ -50,15 +51,24 @@
 
 % Insert image
 %\begin{figure}[H]
-%\centering
-%\includegraphics[width=1\textwidth]{resources/filename.png}
-%\caption{This is a caption}
+%    \centering
+%    \includegraphics[scale=1]{resources/filename.png}
+%    \caption{This is a caption}
 %\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Title}
+%%%%% Logo %%%%%
+\setlength{\droptitle}{-60pt} % Shift title vertically (<0 is up, >0 is down)
+\renewcommand{\maketitlehooka}{
+  \begin{center}
+    \includegraphics[scale=0.5]{resources/logo_uca.jpg}
+  \end{center}
+}
+%%%%%%%%%%%%%%%%
+
+\title{\Huge\textbf{This is a title}}
 
 \author{Anthony IOZZIA}
 
@@ -66,14 +76,20 @@
 \affil{Teacher: teacher name}
 
 \begin{document}
+
 \maketitle
 
+\noindent\hrulefill % Separator line
+
 %%%%% Abstract %%%%%
-%\begin{abstract}
-%\end{abstract}
+\begin{abstract}
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi lacus, varius vel hendrerit nec, scelerisque sit amet lacus. Morbi sodales purus metus, vitae pharetra diam bibendum eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer et erat vestibulum, ullamcorper erat id, tempor neque. Etiam hendrerit suscipit nisl in consequat. Praesent laoreet pellentesque vestibulum. Curabitur a odio id justo congue convallis.
+\end{abstract}
 %%%%%%%%%%%%%%%%%%%%
 
 \thispagestyle{fancy}
+
+%\newpage % Table of contents on new page
 
 %%%%% Table of contents %%%%%
 \setcounter{tocdepth}{3}
@@ -83,11 +99,16 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction}
+\section{Lorem}
 
-Text
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis ligula a ex rutrum congue. Vivamus faucibus leo ex, at congue diam convallis quis. Sed vehicula mattis orci eu scelerisque. Suspendisse ultrices rutrum justo, quis molestie felis dictum ut. Sed commodo, turpis vitae viverra sodales, magna justo commodo purus, ut porta purus purus id orci. In volutpat sollicitudin vestibulum. Praesent sit amet purus eu neque faucibus interdum. Praesent at libero lorem. Quisque pellentesque euismod molestie. Aliquam aliquam turpis vitae lorem consectetur elementum. In lorem eros, convallis vitae convallis vel, elementum sit amet est. In dignissim erat ac ex rhoncus consectetur.\cite{wikipedia_lorem_ipsum}
 
-%\bibliographystyle{unsrt}
-%\bibliography{references}
+\section{Ipsum}
+
+Vestibulum eget venenatis est, vel vestibulum mi. Phasellus porttitor ut libero ac suscipit. Aliquam erat volutpat. Nam in luctus diam. Integer elit lectus, convallis at turpis ac, tincidunt dictum lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu mi et elit consequat commodo at sit amet arcu. Curabitur mi erat, ullamcorper nec maximus eu, feugiat vitae nisi. Pellentesque molestie, tellus quis elementum tincidunt, ipsum ante scelerisque libero, sed convallis mi dolor quis diam.
+
+
+\bibliographystyle{unsrt}
+\bibliography{references}
 
 \end{document}
