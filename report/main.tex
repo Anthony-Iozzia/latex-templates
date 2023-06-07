@@ -4,8 +4,8 @@
 % English
 \usepackage[english]{babel}
 % French
-% \usepackage[french]{babel}
-% \usepackage[T1]{fontenc}
+%\usepackage[french]{babel}
+%\usepackage[T1]{fontenc}
 
 
 %%%%% Packages %%%%%
@@ -84,7 +84,31 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis ligula
 Vestibulum eget venenatis est, vel vestibulum mi. Phasellus porttitor ut libero ac suscipit. Aliquam erat volutpat. Nam in luctus diam. Integer elit lectus, convallis at turpis ac, tincidunt dictum lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu mi et elit consequat commodo at sit amet arcu. Curabitur mi erat, ullamcorper nec maximus eu, feugiat vitae nisi. Pellentesque molestie, tellus quis elementum tincidunt, ipsum ante scelerisque libero, sed convallis mi dolor quis diam.
 
 
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 
 \end{document}
+
+##### LATEX CHEATSHEET #####
+
+### Quotations
+``This is a sentence''
+
+### Units
+* Number and unit: `\SI{100}{\mega\bit\per\second}`
+* Unit only (outside math mode): `\si{\mega\bit\per\second}`
+* Unit only (inside math mode): `100\,\si{\mega\bit\per\second}`
+
+### Subscripts and superscripts
+* Inside math mode:
+    -% Subscript: `variable_n` or `variable_{multiple subscript chars}`
+    -% Superscript: `variable^n` or `variable^{multiple superscript chars}`
+* Outside math mode: `\textsubscript{n}` or `\textsuperscript{th}`
+
+### Insert image
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{resources/filename.png}
+    \caption{This is a caption}
+\end{figure}
