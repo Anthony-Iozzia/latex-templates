@@ -1,14 +1,26 @@
 \documentclass{article}
 
-%%%%% Language setting %%%%%
-% English
-\usepackage[english]{babel}
-% French
-%\usepackage[french]{babel}
-%\usepackage[T1]{fontenc}
+% Declare "if" variables
+\newif\ifdisplaybibliography
+\newif\ifdisplayabstract
+\newif\ifdisplaytableofcontents
 
 
-%%%%% Packages %%%%%
+% Language
+\newcommand{\documentlanguage}{english} % Set document language ("english" or "french")
+\ifnum\pdfstrcmp{\documentlanguage}{english}=0
+    \usepackage[english]{babel}
+\else
+    \ifnum\pdfstrcmp{\documentlanguage}{french}=0
+        \usepackage[french]{babel}
+        \usepackage[T1]{fontenc}
+    \else
+        \GenericError{}{Wrong language specified}{Set the "documentlanguage" variable to a valid language.}{}
+    \fi
+\fi
+
+
+% Packages
 \usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{graphicx}
@@ -22,27 +34,31 @@
 \usepackage{titling} % Image before title
 
 
-%%%%% Page number in footer %%%%%
+% Page number in footer
 \usepackage{lastpage}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead{}
 \renewcommand{\headrulewidth}{0pt}
-% if English:
-\cfoot{Page \thepage\ of \pageref*{LastPage}}
-% if French:
-%\cfoot{Page \thepage\ sur \pageref*{LastPage}}
+\ifnum\pdfstrcmp{\documentlanguage}{english}=0
+    \cfoot{Page \thepage\ of \pageref*{LastPage}}
+\else
+    \ifnum\pdfstrcmp{\documentlanguage}{french}=0
+        \cfoot{Page \thepage\ sur \pageref*{LastPage}}
+    \else
+        \GenericError{}{Wrong language specified}{Set the "documentlanguage" variable to a valid language.}{}
+    \fi
+\fi
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%% Logo %%%%%
+% Logo
 \setlength{\droptitle}{-60pt} % Shift title vertically (<0 is up, >0 is down)
 \renewcommand{\maketitlehooka}{
   \begin{center}
     \includegraphics[scale=0.5]{resources/logo_uca.jpg}
   \end{center}
 }
-%%%%%%%%%%%%%%%%
+
 
 \title{\Huge\textbf{This is a title}}
 
@@ -57,36 +73,45 @@
 
 \noindent\hrulefill % Separator line
 
-%%%%% Abstract %%%%%
-\begin{abstract}
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi lacus, varius vel hendrerit nec, scelerisque sit amet lacus. Morbi sodales purus metus, vitae pharetra diam bibendum eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer et erat vestibulum, ullamcorper erat id, tempor neque. Etiam hendrerit suscipit nisl in consequat. Praesent laoreet pellentesque vestibulum. Curabitur a odio id justo congue convallis.
-\end{abstract}
-%%%%%%%%%%%%%%%%%%%%
+% Abstract
+\displayabstracttrue % Set to true or false to enable or disable abstract
+\ifdisplayabstract
+    \begin{abstract}
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mi lacus, varius vel hendrerit nec, scelerisque sit amet lacus. Morbi sodales purus metus, vitae pharetra diam bibendum eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer et erat vestibulum, ullamcorper erat id, tempor neque. Etiam hendrerit suscipit nisl in consequat. Praesent laoreet pellentesque vestibulum. Curabitur a odio id justo congue convallis.
+    \end{abstract}
+\fi
+
 
 \thispagestyle{fancy}
 
 %\newpage % Table of contents on new page
 
-%%%%% Table of contents %%%%%
-\setcounter{tocdepth}{3}
-\tableofcontents
+% Table of contents
+\displaytableofcontentstrue % Set to true or false to enable or disable table of contents
+\ifdisplaytableofcontents
+    \setcounter{tocdepth}{3} % Set depth for table of contents
+    \tableofcontents
+\fi
+
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Lorem}
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis ligula a ex rutrum congue. Vivamus faucibus leo ex, at congue diam convallis quis. Sed vehicula mattis orci eu scelerisque. Suspendisse ultrices rutrum justo, quis molestie felis dictum ut. Sed commodo, turpis vitae viverra sodales, magna justo commodo purus, ut porta purus purus id orci. In volutpat sollicitudin vestibulum. Praesent sit amet purus eu neque faucibus interdum. Praesent at libero lorem. Quisque pellentesque euismod molestie. Aliquam aliquam turpis vitae lorem consectetur elementum. In lorem eros, convallis vitae convallis vel, elementum sit amet est. In dignissim erat ac ex rhoncus consectetur.\cite{wikipedia_lorem_ipsum}
 
-\section{Ipsum}
 
+\section{Ipsum}
 Vestibulum eget venenatis est, vel vestibulum mi. Phasellus porttitor ut libero ac suscipit. Aliquam erat volutpat. Nam in luctus diam. Integer elit lectus, convallis at turpis ac, tincidunt dictum lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu mi et elit consequat commodo at sit amet arcu. Curabitur mi erat, ullamcorper nec maximus eu, feugiat vitae nisi. Pellentesque molestie, tellus quis elementum tincidunt, ipsum ante scelerisque libero, sed convallis mi dolor quis diam.
 
 
+\displaybibliographytrue % Set to true or false to enable or disable bibliography
+\ifdisplaybibliography
+  \bibliographystyle{unsrt}
+  \bibliography{references}
+\fi
 
-\bibliographystyle{unsrt}
-\bibliography{references}
 
 \end{document}
 
